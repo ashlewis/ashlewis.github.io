@@ -1,0 +1,115 @@
+  $banner-bit-man-x: 0px;
+  $banner-bit-man-y: 0px;
+  $banner-bit-man-offset-x: 0px;
+  $banner-bit-man-offset-y: 0px;
+  $banner-bit-man-width: 380px;
+  $banner-bit-man-height: 196px;
+  $banner-bit-man-total-width: 760px;
+  $banner-bit-man-total-height: 392px;
+  $banner-bit-man-image: '../images/sprite.png';
+  $banner-bit-man: 0px 0px 0px 0px 380px 196px 760px 392px '../images/sprite.png';
+  $banner-bit-teenager-x: 380px;
+  $banner-bit-teenager-y: 0px;
+  $banner-bit-teenager-offset-x: -380px;
+  $banner-bit-teenager-offset-y: 0px;
+  $banner-bit-teenager-width: 380px;
+  $banner-bit-teenager-height: 196px;
+  $banner-bit-teenager-total-width: 760px;
+  $banner-bit-teenager-total-height: 392px;
+  $banner-bit-teenager-image: '../images/sprite.png';
+  $banner-bit-teenager: 380px 0px -380px 0px 380px 196px 760px 392px '../images/sprite.png';
+  $banner-bit-woman-x: 0px;
+  $banner-bit-woman-y: 196px;
+  $banner-bit-woman-offset-x: 0px;
+  $banner-bit-woman-offset-y: -196px;
+  $banner-bit-woman-width: 380px;
+  $banner-bit-woman-height: 196px;
+  $banner-bit-woman-total-width: 760px;
+  $banner-bit-woman-total-height: 392px;
+  $banner-bit-woman-image: '../images/sprite.png';
+  $banner-bit-woman: 0px 196px 0px -196px 380px 196px 760px 392px '../images/sprite.png';
+  $fork-x: 454px;
+  $fork-y: 196px;
+  $fork-offset-x: -454px;
+  $fork-offset-y: -196px;
+  $fork-width: 32px;
+  $fork-height: 32px;
+  $fork-total-width: 760px;
+  $fork-total-height: 392px;
+  $fork-image: '../images/sprite.png';
+  $fork: 454px 196px -454px -196px 32px 32px 760px 392px '../images/sprite.png';
+  $github-x: 486px;
+  $github-y: 196px;
+  $github-offset-x: -486px;
+  $github-offset-y: -196px;
+  $github-width: 32px;
+  $github-height: 32px;
+  $github-total-width: 760px;
+  $github-total-height: 392px;
+  $github-image: '../images/sprite.png';
+  $github: 486px 196px -486px -196px 32px 32px 760px 392px '../images/sprite.png';
+  $icon-1-x: 380px;
+  $icon-1-y: 196px;
+  $icon-1-offset-x: -380px;
+  $icon-1-offset-y: -196px;
+  $icon-1-width: 37px;
+  $icon-1-height: 37px;
+  $icon-1-total-width: 760px;
+  $icon-1-total-height: 392px;
+  $icon-1-image: '../images/sprite.png';
+  $icon-1: 380px 196px -380px -196px 37px 37px 760px 392px '../images/sprite.png';
+  $icon-4-x: 417px;
+  $icon-4-y: 196px;
+  $icon-4-offset-x: -417px;
+  $icon-4-offset-y: -196px;
+  $icon-4-width: 37px;
+  $icon-4-height: 37px;
+  $icon-4-total-width: 760px;
+  $icon-4-total-height: 392px;
+  $icon-4-image: '../images/sprite.png';
+  $icon-4: 417px 196px -417px -196px 37px 37px 760px 392px '../images/sprite.png';
+  $icon-error-x: 550px;
+  $icon-error-y: 196px;
+  $icon-error-offset-x: -550px;
+  $icon-error-offset-y: -196px;
+  $icon-error-width: 29px;
+  $icon-error-height: 24px;
+  $icon-error-total-width: 760px;
+  $icon-error-total-height: 392px;
+  $icon-error-image: '../images/sprite.png';
+  $icon-error: 550px 196px -550px -196px 29px 24px 760px 392px '../images/sprite.png';
+  $twitter-x: 518px;
+  $twitter-y: 196px;
+  $twitter-offset-x: -518px;
+  $twitter-offset-y: -196px;
+  $twitter-width: 32px;
+  $twitter-height: 32px;
+  $twitter-total-width: 760px;
+  $twitter-total-height: 392px;
+  $twitter-image: '../images/sprite.png';
+  $twitter: 518px 196px -518px -196px 32px 32px 760px 392px '../images/sprite.png';
+
+  @mixin sprite-width($sprite) {
+    width: nth($sprite, 5);
+  }
+
+  @mixin sprite-height($sprite) {
+    height: nth($sprite, 6);
+  }
+
+  @mixin sprite-position($sprite) {
+    $sprite-offset-x: nth($sprite, 3);
+    $sprite-offset-y: nth($sprite, 4);
+    background-position: $sprite-offset-x  $sprite-offset-y;
+  }
+
+  @mixin sprite-image($sprite) {
+    background-image: url(nth($sprite, 9));
+  }
+
+  @mixin sprite($sprite) {
+    @include sprite-image($sprite);
+    @include sprite-position($sprite);
+    @include sprite-width($sprite);
+    @include sprite-height($sprite);
+  }

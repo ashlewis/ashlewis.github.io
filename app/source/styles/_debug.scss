@@ -1,0 +1,8 @@
+body{
+    background-image:linear-gradient(darken($background,10) .1rem, transparent .1rem);
+    background-size: 100% $defaultLineHeight;
+}
+
+.test__measure{
+    color:red;
+}

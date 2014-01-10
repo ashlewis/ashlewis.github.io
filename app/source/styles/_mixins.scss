@@ -1,0 +1,12 @@
+//--------------------
+// MIXIN
+//--------------------
+@mixin font($factor:1){
+
+    $fontSize: $factor*1rem;
+
+    font-size: $fontSize;
+    line-height: ceil(($fontSize)/$defaultLineHeight) * $defaultLineHeight;
+    margin-top:$defaultLineHeight;
+    margin-bottom:0;
+}

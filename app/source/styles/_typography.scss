@@ -1,0 +1,123 @@
+@import url(http://fonts.googleapis.com/css?family=Michroma);
+
+// full height
+// ------------------------
+html{
+  height: 100%;
+  overflow-y: scroll;
+}
+body {
+  min-height: 100%;
+}
+
+// fonts
+//--------------------
+html{
+  font-family: $defaultFontFamilySans;
+}
+
+h1, h2, h3, h4, h5, h6, a{
+  font-family: $defaultFontFamilySerif;
+}
+// responsive
+// -----------------------
+html{
+  font-size: 75%;
+  line-height:$defaultLineHeight;  
+
+  color:$color;
+  background:$background;
+
+  @media screen and (min-width: 35em) {
+    font-size:125%;
+  }
+
+  @media screen and (min-width: 60em) {
+    font-size:150%;
+  }  
+  
+  transition: font 0.3s ease;
+}
+
+// measure
+//--------------------
+.container{
+  min-width:22rem;
+  max-width:37rem;
+  margin:0 auto;
+  padding:0 1rem;
+}
+
+// vertical rhythym
+//--------------------
+h1{
+  @include font(2.285);
+  font-weight: 600;
+}
+
+h2{
+ @include font(1.715);
+  font-weight: 600;
+  color:indianred;
+}
+
+h3{
+  @include font(1.145);
+  font-weight: 600;
+}
+
+h4{
+  @include font();
+  font-weight: 600;
+}
+
+body, p, ol, ul, blockquote, dl, dt, pre, code{
+  @include font();
+}
+
+body{
+  min-height:100%;
+  margin-top:0;
+}
+
+p{
+  text-align:justify;
+}
+
+p + p{
+  text-indent: $defaultLineHeight;
+}
+
+img{
+  margin:0 auto $defaultLineHeight auto;
+  display:block;
+  max-width: 100%;
+  transition: width,height 0.3s ease;
+}
+
+// links
+//--------------------
+
+a{
+  color:$linkColor;
+  &:hover{
+    color:darken($linkColor, 15);
+  }
+  &:active{
+    color:darken($linkColor, 30);
+  }
+  &:visited{
+    color:lighten($linkColor, 15);
+  }
+}
+
+h1 > a{
+  text-decoration:none;
+}
+
+
+// lists
+//-------------------
+dd{
+  margin-left:0;
+}

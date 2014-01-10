@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{ page.title }}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+        <link rel="stylesheet" href="/css/main.css">
+        
+    </head>
+
+    <body>
+
+        <!--[if lt IE 8]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="container">
+
+            <div class="header">
+
+                <h1 class="header__site-name"><a href="/">{{ site.name }}</a></h1>
+
+                <ul class="menu">
+                  <li class="menu__item"><a  class="menu__link"href="/">home</a></li>
+                  <li class="menu__item"><a  class="menu__link"href="/">about</a></li>
+                  <li class="menu__item"><a  class="menu__link"href="/">contact</a></li>
+                </ul>
+
+            </div>
+
+            {{ content }}  
+
+        </div>
+
+        <div class="footer">
+            <dl>
+            {% for post in site.posts limit:10 %}
+                <dt class="post-date"><small>{{ post.date | date: "%d %B, %Y" }}</small></dt>
+                <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
+            {% endfor %}
+            </dl>
+        </div>  
+
+      <script src="/js/vendor/require.js" data-main="/js/main"></script>
+
+    </body>
+</html>
