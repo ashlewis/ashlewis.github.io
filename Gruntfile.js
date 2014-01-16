@@ -11,18 +11,18 @@ module.exports = function(grunt) {
 
         // run js hint on following js fiels
         jshint: {
-            lint: ['Gruntfile.js', 'app/source/scripts/**/*.js', 'tests/**/*.js']
+            lint: ['Gruntfile.js', 'source/scripts/**/*.js', 'tests/**/*.js']
         },
 
         // requirejs compilation
         requirejs: {
             options: {
-                baseUrl: 'app/source/scripts',
+                baseUrl: 'source/scripts',
 
-                mainConfigFile:'app/source/scripts/main.js',
+                mainConfigFile:'source/scripts/main.js',
 
                 name: 'main',
-                dir: 'app/js/',
+                dir: 'js/',
 
                 // remove all combined scripts from compiled
                 removeCombined: true,
@@ -48,15 +48,15 @@ module.exports = function(grunt) {
         copy: {
             // copy require.js file to public
             requirejs: {
-                src: ['app/source/components/requirejs/require.js'],
-                dest: 'app/js/vendor/require.js'
+                src: ['source/components/requirejs/require.js'],
+                dest: 'js/vendor/require.js'
             },
             // copy/rename normalize.css as sass can only inline import .scss files
             // NOTE: included as part of inuit
-            // normalize: {
-            //     src: ['app/source/components/normalize-css/normalize.css'],
-            //     dest: 'app/source/styles/vendor/_normalize.scss'
-            // }
+            normalize: {
+                 src: ['source/components/normalize-css/normalize.css'],
+                 dest: 'source/styles/vendor/_normalize.scss'
+            }
         },
 
         // spritesmith
@@ -67,13 +67,13 @@ module.exports = function(grunt) {
         sprite: {
             all: {
                 // Sprite files to read in
-                src: ['app/source/images/sprites/*.png'],
+                src: ['source/images/sprites/*.png'],
 
                 // Location to output spritesheet
-                destImg: 'app/source/images/sprite.png',
+                destImg: 'source/images/sprite.png',
 
                 // SASS with variables under sprite names
-                destCSS: 'app/source/styles/_sprite.scss',
+                destCSS: 'source/styles/_sprite.scss',
 
                 // OPTIONAL: Specify algorithm (top-down, left-right, diagonal [\ format],
                 // alt-diagonal [/ format], binary-tree [best packing])
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
             // concat
             dev: {
                 files: {
-                  'app/css/main.css': 'app/source/styles/main.scss'
+                  'css/main.css': 'source/styles/main.scss'
                 },  
                 options: {
                     style: 'expanded'              
@@ -100,7 +100,7 @@ module.exports = function(grunt) {
             // concat and minify
             dist: {
                 files: {
-                  'app/css/main.css': 'app/source/styles/main.scss'
+                  'css/main.css': 'source/styles/main.scss'
                 },  
                 options: {
                   style: 'compressed'
@@ -113,9 +113,9 @@ module.exports = function(grunt) {
             dynamic: {
                 files: [{
                     expand: true,               // Enable dynamic expansion
-                    cwd: 'app/source/images/',  // Src matches are relative to this path
+                    cwd: 'source/images/',      // Src matches are relative to this path
                     src: ['*.{png,jpg,gif}'],   // Actual patterns to match
-                    dest: 'app/images/'         // Destination path prefix
+                    dest: 'images/'             // Destination path prefix
                 }]
             }
         },
@@ -125,7 +125,7 @@ module.exports = function(grunt) {
         // https://github.com/philipwalton/html-inspector
         // 'html-inspector': {            
         //     all: {
-        //         src: ['app/_site/**/*.{html,htm}']
+        //         src: ['_site/**/*.{html,htm}']
         //     }
         // },
 
@@ -141,27 +141,27 @@ module.exports = function(grunt) {
             // js source files
             js: {
                 
-                files: ['app/source/scripts/**/*.js'],
+                files: ['source/scripts/**/*.js'],
                 tasks: ['jshint', 'requirejs:dev']
             },
             // sprite files
             sprite: {
-                 files: ['app/source/images/sprites/*.png'],
+                 files: ['source/images/sprites/*.png'],
                  tasks: ['sprite', 'sass:dev', 'imagemin']
             },
             // sass files
             sass: {
-                files: ['app/source/styles/**/*.scss'],
+                files: ['source/styles/**/*.scss'],
                 tasks: ['sass:dev']
             },
             // optimize images
             imagemin: {
-                files: ['app/source/images/*.{png,jpg,gif}'],
+                files: ['source/images/*.{png,jpg,gif}'],
                 tasks: ['imagemin']
-            },
+            }
             // inspect html
             // 'html-inspector': {
-            //     files: ['app/_site/**/*.{html,htm}'],
+            //     files: ['_site/**/*.{html,htm}'],
             //     tasks: ['html-inspector']
             // }       
         },
@@ -170,8 +170,8 @@ module.exports = function(grunt) {
         jekyll: {                       
             serve: {  
                 options: {
-                    src: './app',
-                    dest: './app/_site',
+                    src: '.',
+                    dest: './_site',
                     watch: true,
                     serve: true
                 }                    
@@ -195,7 +195,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build:dist', [
         'jshint',
         'copy:requirejs',
-        //'copy:normalize',
+        'copy:normalize',
         'requirejs:dist',
         'sprite',
         'sass:dist',
